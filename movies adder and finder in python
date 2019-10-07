@@ -1,0 +1,52 @@
+"""
+movie selector
+"""
+movies=[]
+def menu():
+  print("enter 'a' to add movie , 'l' to see movie ,'f' to find movie or 'q' to exit: ")
+  b=input()
+  while b!='q':
+    if b=='a':
+        add_movie()
+    elif b=='l':
+        see_movie(movies)
+    elif b=='f':
+        find_movie()
+    else :
+        print("invalid command,try again")
+    print("enter 'a' to add movie , 'l' to see movie ,'f' to find movie or 'q' to exit: ")
+    b = input()
+
+def add_movie():
+    name=input("name:")
+    actor=input("actor:")
+    year=(input("year:"))
+    movie={
+        "name":name,
+        "actor":actor,
+        "year":year
+    }
+    movies.append(movie)
+
+def see_movie(found):
+    for movie in found:
+     show_movie_details(movie)
+
+
+def show_movie_details(movie):
+    print(f"name:{movie['name']}")
+    print(f"actor:{movie['actor']}")
+    print(f"year:{movie['year']}\n")
+
+
+def find_movie():
+    find_by=input("what property of movie you are looking for")
+    find=input("what are you searching for")
+    found=[]
+    for i in movies:
+        if (i[find_by])==find:
+            found.append(i)
+    see_movie(found)
+menu()
+
+
